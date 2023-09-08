@@ -1,0 +1,15 @@
+/* Custom CSS */
+nav {
+    background-color: #933800!important; /* Green color */
+}
+.navbar-nav .nav-item a.nav-link {
+    color: #FFBB07; /* Change text color to yellow */
+    font-weight: bolder;/* Make the text bold */
+}
+.blur-background {
+    backdrop-filter: blur(10px); /* Adjust the blur amount as needed */
+}
+
+button:hover{
+    color:black
+}
