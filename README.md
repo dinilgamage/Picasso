@@ -48,8 +48,10 @@ Follow these steps to set up the system on your local machine:
 
     ```shell
     php artisan migrate
-
-15. Start the development server:
+15. Compile the front end:
+    ```shell
+    npm run dev
+16. Start the development server:
 
     ```shell
     php artisan serve
