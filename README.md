@@ -4,7 +4,7 @@
 - Bootstrap
 - SQLite
 
-## Installation
+## Installation Guide
 
 Follow these steps to set up the system on your local machine:
 
