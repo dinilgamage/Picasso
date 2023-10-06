@@ -36,7 +36,10 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">       
+                    <ul class="navbar-nav ms-auto">  
+                        <li class="nav-item lead">
+                            <a class="nav-link" style="font-weight: 900" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                        </li>     
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
