@@ -94,7 +94,7 @@
                         <div class="translucent-container"  style="background-color: rgba(147, 56, 0, 0.8); padding: 20px; color:#fff">
                             <h1>Welcome to Picasso!</h1>
                             <p style="font-size: 1.5em"> Imagine a place where creativity knows no bounds, where every brushstroke is a masterpiece waiting to be discovered, and where artists reign supreme. Welcome to Picasso, your one-stop destination for all things art, and the ultimate marketplace where artists like you can not only showcase but also sell your exceptional creations</p>
-                            <a href="#" class="btn btn-secondary" style="background-color: #c94f03">Tell me more</a>
+                            <a href="{{ route('register') }}" class="btn btn-secondary" style="background-color: #c94f03">Get Started</a>
                         </div>
                     </div>
 

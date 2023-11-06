@@ -1,0 +1,55 @@
+
+        body {
+            display: flex;
+            background-color: antiquewhite;
+            margin: 0;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        #sidebar {
+            width: 250px;
+            background: #933800;
+            color: #fff;
+            padding-top: 5px;
+            position: sticky;
+        }
+        .navbar-brand{
+            padding-bottom: 20px;
+        }
+
+        .sidebar-header{
+            padding: 20px;
+        }
+
+        h1, h3{
+            font-weight: bold;
+        }
+
+        li{
+            padding: 1px;
+        }
+
+        #sidebar a {
+            color: black;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            margin: 10px 15px; /* Adding some margin to the sides for the floating effect */
+            background: #FFBB07; /* A slightly different background from the sidebar */
+            border-radius: 50px; /* Large border-radius for pill-like buttons */
+            transition: all 0.3s ease; /* Smooth transition for hover effect */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow to begin with */
+            font-weight: bold;
+        }
+        #sidebar a:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+        }
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: antiquewhite;
+            width: 700px;
+        }
+        .container {
+            width: auto;
+        }
