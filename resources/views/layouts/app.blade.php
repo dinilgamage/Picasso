@@ -39,6 +39,12 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+                        @if (Route::has('home'))
+                        <li class="nav-item lead">
+                            <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
+                        </li>
+                    @endif
+                          
                             @if (Route::has('login'))
                                 <li class="nav-item lead">
                                     <a class="nav-link" style="font-weight: 900" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -55,7 +61,7 @@
                                 <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Dashboard</a>
+                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Profile</a>
                             </li>
                             
                             <li class="nav-item dropdown">

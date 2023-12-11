@@ -6,7 +6,7 @@
     
     <a href="{{ route('users.create') }}" class="btn btn-success mb-3">Add New User</a>
 
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Name</th>

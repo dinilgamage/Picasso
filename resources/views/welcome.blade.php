@@ -67,6 +67,12 @@
 
                             @endauth
                             @guest
+                            @if (Route::has('home'))
+                            <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
+                            </li>
+                        @endif
+
                                 @if (Route::has('login'))
                                     <li class="nav-item lead">
                                         <a class="nav-link" style="font-weight: 900" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -88,6 +94,7 @@
                 </div>
                 
             </nav>
+            @guest 
             <div class="vh-100" > 
                 <div class="container h-100 d-flex justify-content-start align-items-center">
                     <div class="col-md-6">
@@ -99,6 +106,10 @@
                     </div>
 
             </div>
+            
+            @endauth
+
+           
         
         </div>
         

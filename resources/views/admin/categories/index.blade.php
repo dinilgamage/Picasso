@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Categories List</h1>
     <a href="{{ route('categories.create') }}" class="btn btn-success mb-3">Add New Category</a>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Name</th>
@@ -23,7 +23,7 @@
                     <td>{{ $category->updated_at }}</td>
                     <td>
                         <div class="d-flex align-items-center"> <!-- Flexbox container -->
-                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning mr-2">Edit</a> <!-- Added margin for spacing -->
+                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning button-spacing">Edit</a> <!-- Added margin for spacing -->
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

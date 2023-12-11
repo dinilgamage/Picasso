@@ -53,3 +53,18 @@
         .container {
             width: auto;
         }
+
+        .table {
+            background-color: antiquewhite;
+        }
+
+        .table {
+            --bs-table-bg: antiquewhite;
+        }
+
+        .button-spacing {
+            margin-right: 4px; 
+        }
+        
+        
+
