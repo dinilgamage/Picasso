@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArtworkController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +20,22 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/users', UserController::class);
     Route::resource('/admin/categories', CategoryController::class);
 });
+
+Route::resource('artworks', ArtworkController::class)->middleware('auth');
+
+//command to make a controller named WelcomeContoller with reosrces 
+// php artisan make:controller WelcomeController --resource 

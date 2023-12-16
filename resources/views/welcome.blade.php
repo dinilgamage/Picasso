@@ -45,7 +45,7 @@
                                 <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Dashboard</a>
+                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Profile</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -107,7 +107,38 @@
 
             </div>
             
+            @endguest
+            
+
+            @auth
+            <style>
+                #main-c {
+                    margin-top: 100px;
+                }
+            </style>
             @endauth
+
+           
+
+            <div id="main-c" class="container">
+                <div class="row">
+                    @foreach ($artworks as $artwork)
+                        <div class="col-md-3">
+                            <div class="card mb-4">
+                                <img class="card-img-top card-img" src="{{ asset('images/' . $artwork->image) }}" alt="{{ $artwork->title }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $artwork->title }}</h5>
+                                    <p class="card-text"><small class="text-muted">For sale by {{ $artwork->user->name }}</small></p>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <button class="btn btn-primary mb-2 w-100">Add to Cart</button>
+                                        <button class="btn btn-success w-100">Purchase</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
 
            
         

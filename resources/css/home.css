@@ -13,3 +13,22 @@ nav {
 button:hover{
     color:black
 }
+
+.card-img {
+    width: 100%;
+    height: 250px; /* adjust as needed */
+    object-fit: cover;
+}
+.card-body{
+    background-color: antiquewhite;
+   
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
