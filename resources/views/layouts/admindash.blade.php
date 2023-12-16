@@ -27,7 +27,7 @@
                 <a href="{{ route('users.index') }}">Manage Users</a>
             </li>
             <li>
-                <a href="{{ route('users.index') }}">Manage Artworks</a>
+                <a href="{{ route('artworks.index') }}">Manage Artworks</a>
             </li>
             <li>
                 <a href="{{ route('categories.index') }}">Manage Categories</a>
