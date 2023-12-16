@@ -30,8 +30,8 @@
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>
                     <td>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning" >Edit</a>
+                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this user?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

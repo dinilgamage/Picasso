@@ -11,7 +11,10 @@
             background: #933800;
             color: #fff;
             padding-top: 5px;
-            position: sticky;
+            
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
         }
         .navbar-brand{
             padding-bottom: 20px;
@@ -40,6 +43,7 @@
             transition: all 0.3s ease; /* Smooth transition for hover effect */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow to begin with */
             font-weight: bold;
+            
         }
         #sidebar a:hover {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
@@ -49,6 +53,7 @@
             padding: 20px;
             background-color: antiquewhite;
             width: 700px;
+            margin-left: 250px
         }
         .container {
             width: auto;

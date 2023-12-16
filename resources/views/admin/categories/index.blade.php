@@ -24,7 +24,7 @@
                     <td>
                         <div class="d-flex align-items-center"> <!-- Flexbox container -->
                             <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning button-spacing">Edit</a> <!-- Added margin for spacing -->
-                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this category?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
