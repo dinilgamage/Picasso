@@ -45,11 +45,21 @@
                                 <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Cart</a>
+                            </li>
+                            <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Orders</a>
+                            </li>
+                            <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Artworks</a>
+                            </li>
+                            
+                            <li class="nav-item lead">
                                 <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Profile</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <img src="{{ Auth::user()->avatar ? asset('avatars/' . Auth::user()->avatar) : asset('default_image/df.webp') }}" alt="User Avatar" class="rounded-circle" height="35" width="35">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

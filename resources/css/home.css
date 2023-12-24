@@ -32,3 +32,24 @@ button:hover{
     text-overflow: ellipsis;
 }
 
+.card-inner{
+    background-color: #933800;
+    border-radius: 25px;
+  
+    
+}
+.card-outer{
+    background-color: antiquewhite;
+    border-radius: 25px;
+}
+
+.card-inner .card-text {
+    color: white;
+}
+
+.card-inner .card-title {
+    color: #FFBB07;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
