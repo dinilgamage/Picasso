@@ -44,14 +44,15 @@
                             <li class="nav-item lead">
                                 <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
                             </li>
+                            
+                            <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/artists') }}" class="nav-link">Artists</a>
+                            </li>
+                            <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/arts') }}" class="nav-link">Artworks</a>
+                            </li>
                             <li class="nav-item lead">
                                 <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Cart</a>
-                            </li>
-                            <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Orders</a>
-                            </li>
-                            <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Artworks</a>
                             </li>
                             
                             <li class="nav-item lead">
@@ -62,12 +63,17 @@
                                     <img src="{{ Auth::user()->avatar ? asset('avatars/' . Auth::user()->avatar) : asset('default_image/df.webp') }}" alt="User Avatar" class="rounded-circle" height="35" width="35">
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-end custom-dropdown-main" aria-labelledby="navbarDropdown">
+                                    <a href="{{ url('/home') }}" class="dropdown-item custom-dropdown-item">Profile</a>
+                                    <a href="{{ url('/profile/analytics') }}" class="dropdown-item custom-dropdown-item">Analytics</a>
+                                    <a href="{{ url('/artworks') }}" class="dropdown-item custom-dropdown-item">Manage Artworks</a>
+                                    <a href="{{ url('/orders') }}" class="dropdown-item custom-dropdown-item">Manage Orders</a>
+                                    <a class="dropdown-item custom-dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -140,8 +146,8 @@
                                     <h5 class="card-title">{{ $artwork->title }}</h5>
                                     <p class="card-text"><small class="text-muted">For sale by {{ $artwork->user->name }}</small></p>
                                     <div class="d-flex flex-column align-items-center">
-                                        <button class="btn btn-primary mb-2 w-100">Add to Cart</button>
-                                        <button class="btn btn-success w-100">Purchase</button>
+                                        <a href="{{ route('arts.show', $artwork) }}" class="btn btn-primary w-100">View</a>
+                                        
                                     </div>
                                 </div>
                             </div>
