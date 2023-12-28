@@ -45,8 +45,13 @@
                 
             </select>
         </div>
+        <div style="margin-top: 20px">
+            <button type="submit" class="btn btn-primary">Add User</button>
+            
+            <a href="{{ route('users.index') }}" class="btn btn-danger">Back</a>
 
-        <button type="submit" class="btn btn-primary">Add User</button>
+        </div>
+        
     </form>
 </div>
 @endsection

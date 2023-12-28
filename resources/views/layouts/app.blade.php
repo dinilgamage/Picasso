@@ -20,7 +20,7 @@
 </head>
 <body style="background-color: antiquewhite">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('assets/picasso. (2).png') }}" alt="" height="35">
@@ -60,14 +60,15 @@
                             <li class="nav-item lead">
                                 <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
                             </li>
+                            
+                            <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/artists') }}" class="nav-link">Artists</a>
+                            </li>
+                            <li class="nav-item lead">
+                                <a style="font-weight: 900" href="{{ url('/arts') }}" class="nav-link">Artworks</a>
+                            </li>
                             <li class="nav-item lead">
                                 <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Cart</a>
-                            </li>
-                            <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Orders</a>
-                            </li>
-                            <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Artworks</a>
                             </li>
                             <li class="nav-item lead">
                                 <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Profile</a>
@@ -78,25 +79,34 @@
                                     <img src="{{ Auth::user()->avatar ? asset('avatars/' . Auth::user()->avatar) : asset('default_image/df.webp') }}" alt="User Avatar" class="rounded-circle" height="35" width="35">
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-end custom-dropdown-main" aria-labelledby="navbarDropdown">
+                                    <a href="{{ url('/home') }}" class="dropdown-item custom-dropdown-item">Profile</a>
+                                    <a href="{{ url('/profile/analytics') }}" class="dropdown-item custom-dropdown-item">Analytics</a>
+                                    <a href="{{ url('/artworks') }}" class="dropdown-item custom-dropdown-item">Manage Artworks</a>
+                                    <a href="{{ url('/orders') }}" class="dropdown-item custom-dropdown-item">Manage Orders</a>
+                                    <a class="dropdown-item custom-dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>
             </div>
+            
         </nav>
 
-        <main class="py-4">
+        
+
+        <main style="margin-top: 60px" class="py-4">
             @yield('content') 
             <!-- when you extend(layouts.app) in the begining of a blade file, sections named 'content' in blade files will go here-->
         </main>

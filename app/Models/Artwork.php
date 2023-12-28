@@ -27,6 +27,11 @@ class Artwork extends Model
         'price',
         'sold',
         'artist_id',
+        'material',
+        'size',
+        'frame',
+        'signature',
+        
     ];
 
 

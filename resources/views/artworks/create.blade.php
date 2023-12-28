@@ -31,20 +31,56 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label>Price</label>
-            <input type="number" step="0.01" name="price" class="form-control" required>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" step="0.01" name="price" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Material</label>
+                    <input type="text" name="material" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Size</label>
+                    <input type="text" name="size" class="form-control">
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label>Sold</label>
-            <select name="sold" class="form-control">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+        <div class="row" style="margin-bottom: 20px">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Frame</label>
+                    <select name="frame" class="form-control">
+                        <option value="included">Included</option>
+                        <option value="not included">Not Included</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Signature</label>
+                    <input type="text" name="signature" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Sold</label>
+                    <select name="sold" class="form-control">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary">Add Artwork</button>
+        <a href="{{ route('artworks.index') }}" class="btn btn-danger">Back</a>
     </form>
 </div>
 @endsection

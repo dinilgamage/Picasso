@@ -15,8 +15,8 @@
                 <th>Description</th>
                 <th>Artist</th>
                 <th>Image</th>
-                <th>Category</th>
-                <th>Price</th>
+                {{-- <th>Category</th>
+                <th>Price</th> --}}
                 <th>Sold</th>
                 <th>Created at</th>
                 <th>Updated at</th>
@@ -30,8 +30,8 @@
                     <td>{{ $artwork->desc }}</td>
                     <td>{{ $artwork->user->email }}</td> 
                     <td><img src="{{ asset('images/' . $artwork->image) }}" alt="{{ $artwork->title }}" width="100"></td>
-                    <td>{{ $artwork->category->name }}</td>
-                    <td>{{ $artwork->price }}</td>
+                    {{-- <td>{{ $artwork->category->name }}</td>
+                    <td>{{ $artwork->price }}</td> --}}
                     <td>{{ $artwork->sold ? 'Yes' : 'No' }}</td>
                     <td>{{ $artwork->created_at }}</td>
                     <td>{{ $artwork->updated_at }}</td>
