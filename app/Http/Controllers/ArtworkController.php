@@ -47,6 +47,9 @@ class ArtworkController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
             'sold' => 'required|boolean',
+            'material' => 'max:255',
+            'size' => 'max:255',
+            'signature' => 'max:255',
         ]);
     
         $imageName = time().'.'.$request->image->extension();  
@@ -59,10 +62,14 @@ class ArtworkController extends Controller
         $artwork->image = $imageName;
         $artwork->category_id = $request->category_id;
         $artwork->price = $request->price;
+        $artwork->material = $request->material;
+        $artwork->size = $request->size;
+        $artwork->frame = $request->frame;
+        $artwork->signature = $request->signature;
         $artwork->sold = $request->sold;
         $artwork->save();
     
-        return redirect()->route('artworks.index')->with('success', 'User artwork successfully!');
+        return redirect()->route('artworks.index')->with('success', 'Artwork created successfully!');
     }
 
     /**
@@ -70,7 +77,8 @@ class ArtworkController extends Controller
      */
     public function show(Artwork $artwork)
     {
-        return view('artworks.show', compact('artwork'));
+        return view('arts.show', compact('artwork'));
+        
     }
 
     /**
@@ -97,6 +105,9 @@ class ArtworkController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
             'sold' => 'required|boolean',
+            'material' => 'max:255',
+            'size' => 'max:255',
+            'signature' => 'max:255',
         ]);
 
         if ($request->hasFile('image')) {
@@ -109,6 +120,10 @@ class ArtworkController extends Controller
         $artwork->desc = $request->desc;
         $artwork->category_id = $request->category_id;
         $artwork->price = $request->price;
+        $artwork->material = $request->material;
+        $artwork->size = $request->size;
+        $artwork->frame = $request->frame;
+        $artwork->signature = $request->signature;
         $artwork->sold = $request->sold;
         $artwork->save();
 
@@ -125,5 +140,11 @@ class ArtworkController extends Controller
         $artwork->delete();
 
         return redirect()->route('artworks.index')->with('success', 'Artwork deleted successfully!');
+    }
+
+    public function main ()
+    {
+        $artworks = Artwork::with('user', 'category')->get();
+        return view('arts.index', compact('artworks'));
     }
 }
