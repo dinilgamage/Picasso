@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Artwork;
+use Illuminate\Support\Facades\Storage;
 
 
 class ArtworkController extends Controller
@@ -43,7 +44,7 @@ class ArtworkController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'desc' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
             'sold' => 'required|boolean',
@@ -101,7 +102,7 @@ class ArtworkController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'desc' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
             'sold' => 'required|boolean',
@@ -136,6 +137,10 @@ class ArtworkController extends Controller
     public function destroy(Artwork $artwork)
     {
         $this->authorize('delete', $artwork);
+
+        if (file_exists(public_path('images/' . $artwork->image))) {
+            unlink(public_path('images/' . $artwork->image));
+        }
 
         $artwork->delete();
 

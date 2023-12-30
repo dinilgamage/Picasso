@@ -84,11 +84,17 @@
 
                             @endauth
                             @guest
-                            @if (Route::has('home'))
-                            <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
-                            </li>
-                        @endif
+                                @if (Route::has('home'))
+                                <li class="nav-item lead">
+                                    <a style="font-weight: 900" href="{{ url('/') }}" class="nav-link">Home</a>
+                                </li>
+                                @endif
+                                <li class="nav-item lead">
+                                    <a style="font-weight: 900" href="{{ url('/artists') }}" class="nav-link">Artists</a>
+                                </li>
+                                <li class="nav-item lead">
+                                    <a style="font-weight: 900" href="{{ url('/arts') }}" class="nav-link">Artworks</a>
+                                </li>
 
                                 @if (Route::has('login'))
                                     <li class="nav-item lead">

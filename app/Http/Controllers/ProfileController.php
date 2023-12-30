@@ -18,7 +18,7 @@ class ProfileController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'bio' => 'nullable|string|max:255',
+            'bio' => 'nullable|string',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $user = Auth::user();
