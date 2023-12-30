@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <link rel="icon" href="{{ asset('favicons\icons8-art-16.png') }}" type="image/x-icon">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/home.css'])
 
@@ -156,9 +157,10 @@
                 </div>
             </div>
 
-           
+            @include('layouts.footer')
         
         </div>
+       
         
     </body>
     

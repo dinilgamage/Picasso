@@ -13,7 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="icon" href="{{ asset('favicons\icons8-art-16.png') }}" type="image/x-icon">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/home.css']) 
@@ -110,6 +110,8 @@
             @yield('content') 
             <!-- when you extend(layouts.app) in the begining of a blade file, sections named 'content' in blade files will go here-->
         </main>
+        
+
     </div>
 </body>
 </html>
