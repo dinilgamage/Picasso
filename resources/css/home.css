@@ -78,3 +78,16 @@ button:hover{
 .table {
     --bs-table-bg: antiquewhite;
 }
+
+.btn-primary {
+    background-color: #933800;
+    border-color: #933800;
+    transition: 5;
+   
+}
+
+.btn-primary:hover {
+    background-color: #FFBB07;
+    border-color: #FFBB07;
+    color: black;
+}
