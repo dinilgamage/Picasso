@@ -9,7 +9,7 @@
 
     <a href="#" class="btn btn-primary">Contact</a>
     <a href="#" class="btn btn-primary">Rate</a>
-    <a href="{{ route('artists.index') }}" class="btn btn-danger">Back</a>
+    <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
 
 </div>
 @endsection

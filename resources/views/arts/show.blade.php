@@ -30,7 +30,7 @@
                     <a href="#" class="btn btn-primary">Add to wishlist</a>
                     <a href="{{ route('artists.show', $artwork->user->id) }}" class="btn btn-primary">View artist</a>
                     <a href="#" class="btn btn-primary">Purchase</a>
-                    <a href="{{ route('arts.main') }}" class="btn btn-danger">Back</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
                 </div>
             </div>
         </div>
