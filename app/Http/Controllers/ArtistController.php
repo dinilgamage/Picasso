@@ -10,15 +10,13 @@ class ArtistController extends Controller
 {
     public function index()
     {
-        //get artist where role===0
-
-        $artists = User::where('role', 0 )->get(); 
-
+        $artists = User::where('role', 0)->where('id', '!=', auth()->id())->get();
         return view('artists.index', ['artists' => $artists]);
     }
     
     public function show(User $artist)
     {
+        $artist->increment('profile_views'); 
         return view('artists.show', ['artist' => $artist]);
     }
 }

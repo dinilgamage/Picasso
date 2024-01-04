@@ -15,7 +15,7 @@
                             <div class="col-md-4">
                                 <div  class="card text-center mb-3 card-outer">
                                     <div  class="card-body card-inner">
-                                        <h5 class="card-title">{{ Auth::user()->profileViews ?? 0 }}</h5>
+                                        <h5 class="card-title">{{ Auth::user()->profile_views ?? 0 }}</h5>
                                         <p class="card-text">Profile Views</p>
                                     </div>
                                 </div>
