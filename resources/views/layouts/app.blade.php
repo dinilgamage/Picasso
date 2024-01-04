@@ -15,6 +15,8 @@
     <link rel="icon" href="{{ asset('favicons\icons8-art-16.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/home.css']) 
 </head>
@@ -32,11 +34,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li>
+                            <form action="{{ route('search') }}" method="GET" class="form-inline my-2 my-lg-0 me-3">
+                                <div class="input-group">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search by artworks, artists, material, category, etc" aria-label="Search" name="query" id="search" style="width: 600px; background-color:antiquewhite;">
+                                    <button class="btn btn-custom" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                       
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('home'))
@@ -117,6 +127,19 @@
             <!-- when you extend(layouts.app) in the begining of a blade file, sections named 'content' in blade files will go here-->
         </main>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#search").autocomplete({
+                    source: "{{ route('search.autocomplete') }}",
+                    minLength: 2,
+                    select: function(event, ui) {
+                        window.location.href = ui.item.url;
+                    }
+                });
+            });
+        </script>
 
     </div>
 </body>

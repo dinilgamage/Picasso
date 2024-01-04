@@ -6,7 +6,7 @@
 <div class="container">
     <h1>Manage your Profile</h1>
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card shadow mb-4">
                 <div style="background-color: #933800" class="card-header text-white"></div>
 

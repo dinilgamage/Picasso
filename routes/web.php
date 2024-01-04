@@ -10,6 +10,7 @@ use App\Http\Controllers\ArtworkController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\SearchController;
 
 
 /*
@@ -53,6 +54,9 @@ Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artist
 
 Route::get('/arts', [ArtworkController::class, 'main'])->name('arts.main');
 Route::get('/arts/{artwork}', [ArtworkController::class, 'show'])->name('arts.show');
+
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/search/autocomplete', [SearchController::class, 'autocomplete'])->name('search.autocomplete');
 
 //command to make a controller named WelcomeContoller with reosrces 
 // php artisan make:controller WelcomeController --resource 

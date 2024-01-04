@@ -82,12 +82,51 @@ button:hover{
 .btn-primary {
     background-color: #933800;
     border-color: #933800;
-    transition: 5;
-   
 }
 
 .btn-primary:hover {
     background-color: #FFBB07;
     border-color: #FFBB07;
+    color: black;
+    transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+.btn-custom{
+    background-color: #FFBB07;
+    border-color: #FFBB07;
+    color: black;
+    
+}
+
+.btn-custom:hover{
+    background-color: #FFBB07;
+    border-color: #FFBB07;
+    color: black;
+}
+
+
+.ui-autocomplete {
+    z-index: 1050;
+    max-height: 200px; 
+    overflow-y: auto; 
+    border-radius: 10px;
+    background-color: antiquewhite; 
+    color: grey;
+}
+.ui-menu-item {
+    padding: 5px 10px; 
+    
+}
+.ui-menu-item:hover {
+    background-color: antiquewhite; 
+    color: black;
+}
+.ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    border: none;
+    background: none;
+}
+.ui-menu .ui-menu-item-wrapper.ui-state-active {
+    border: none;
+    background-color: antiquewhite;
     color: black;
 }
