@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Artwork;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -147,9 +148,27 @@ class ArtworkController extends Controller
         return redirect()->route('artworks.index')->with('success', 'Artwork deleted successfully!');
     }
 
-    public function main ()
+    public function main(Request $request)
     {
-        $artworks = Artwork::with('user', 'category')->get();
-        return view('arts.index', compact('artworks'));
+        $query = Artwork::with('user', 'category');
+
+        if ($request->has('category_id') && $request->category_id != '') {
+            $query->where('category_id', $request->category_id);
+        }
+
+        $artworks = $query->get();
+
+        $categories = Category::all();
+        return view('arts.index', compact('artworks', 'categories'));
+    }
+
+    public function addToCart(Request $request, Artwork $artwork)
+    {
+        $cart = new Cart();
+        $cart->user_id = auth()->id();
+        $cart->artwork_id = $artwork->id;
+        $cart->save();
+
+        return back()->with('success', 'Artwork added to cart!');
     }
 }

@@ -18,6 +18,7 @@
 
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/home.css'])
+        @livewireStyles
 
 
         <!-- Styles -->
@@ -68,7 +69,7 @@
                                 <a style="font-weight: 900" href="{{ url('/arts') }}" class="nav-link">Artworks</a>
                             </li>
                             <li class="nav-item lead">
-                                <a style="font-weight: 900" href="{{ url('/home') }}" class="nav-link">Cart</a>
+                                <a style="font-weight: 900" href="{{ url('/cart') }}" class="nav-link">Cart</a>
                             </li>
                             
                             <li class="nav-item lead">
@@ -183,7 +184,6 @@
         </div>
 
 
-       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript">
@@ -198,8 +198,11 @@
             });
         </script>
 
+        @livewireScripts
+
        
-        
+       
+
     </body>
     
     

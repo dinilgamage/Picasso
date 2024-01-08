@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div class="container">
         <h1>{{ $artwork->title }}</h1>
@@ -25,14 +26,29 @@
                 </div>
 
                 {{-- buttons div --}}
-                <div>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <a href="#" class="btn btn-primary">Add to wishlist</a>
-                    <a href="{{ route('artists.show', $artwork->user->id) }}" class="btn btn-primary">View artist</a>
-                    <a href="#" class="btn btn-primary">Purchase</a>
-                    <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
+                <div class="d-flex">
+                    <div style="padding-right: 10px;">
+                        <form action="{{ route('arts.add-to-cart', $artwork) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Add to cart</button>
+                        </form>
+                    </div>
+                    <div style="padding-right: 10px;">
+                        <a href="#" class="btn btn-primary">Add to wishlist</a>
+                    </div>
+                    <div style="padding-right: 10px;">
+                        <a href="{{ route('artists.show', $artwork->user->id) }}" class="btn btn-primary">View artist</a>
+                    </div>
+                    <div style="padding-right: 10px;">
+                        <a href="#" class="btn btn-primary">Purchase</a>
+                    </div>
+                    <div>
+                        <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
+    
 @endsection

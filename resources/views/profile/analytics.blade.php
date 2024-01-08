@@ -23,7 +23,7 @@
                             <div class="col-md-4">
                                 <div class="card text-center mb-3 card-outer">
                                     <div class="card-body card-inner">
-                                        <h5 class="card-title">{{ Auth::user()->artworksOnSale ?? 0 }}</h5>
+                                        <h5 class="card-title">{{ Auth::user()->artworks->count() ?? 0 }}</h5>
                                         <p class="card-text">Artworks on Sale</p>
                                     </div>
                                 </div>

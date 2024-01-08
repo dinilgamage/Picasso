@@ -58,5 +58,11 @@ Route::get('/arts/{artwork}', [ArtworkController::class, 'show'])->name('arts.sh
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/search/autocomplete', [SearchController::class, 'autocomplete'])->name('search.autocomplete');
 
+Route::post('/arts/{artwork}/add-to-cart', [ArtworkController::class, 'addToCart'])->name('arts.add-to-cart')->middleware('auth');
+Route::get('/cart', function () {
+    return view('cart-component');
+})->name('cart')->middleware('auth');
+
+
 //command to make a controller named WelcomeContoller with reosrces 
 // php artisan make:controller WelcomeController --resource 
