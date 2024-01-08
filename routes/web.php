@@ -11,6 +11,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\RatingController;
 
 
 /*
@@ -63,6 +64,6 @@ Route::get('/cart', function () {
     return view('cart-component');
 })->name('cart')->middleware('auth');
 
-
+Route::post('/submit-rating', [RatingController::class, 'store'])->middleware('auth');
 //command to make a controller named WelcomeContoller with reosrces 
 // php artisan make:controller WelcomeController --resource 
