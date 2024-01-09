@@ -24,6 +24,12 @@ class User extends Authenticatable
         return $this->hasMany(Artwork::class, 'artist_id');
     }
 
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'rated_id');
+    }
+
     protected $fillable = [
         'name',
         'phone',

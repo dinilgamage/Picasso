@@ -18,6 +18,7 @@
                     <p>Description: {{ $artwork->desc }}</p>
                     <p>Artist: {{ $artwork->user->name }}</p>
                     <p>Category: {{ $artwork->category->name }}</p>
+                    <p>Views: {{ $artwork->views }}</p>
                     <p>Price: {{ $artwork->price }}</p>
                     <p>Material: {{ $artwork->material }}</p>
                     <p>Size: {{ $artwork->size }}</p>

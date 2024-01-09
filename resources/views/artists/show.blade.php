@@ -13,7 +13,7 @@
         <div class="col-md-6">
             <div>
                 <h1>{{ $artist->name }}</h1>
-                <h3>Headline: {{ $artist->headline }}</h3>
+                <h3>{{ $artist->headline }}</h3>
                 <p>Bio: {{ $artist->bio }}</p>
                 <p>Social Links: {{ $artist->social_links }}</p>
                 <p>Website: {{ $artist->website }}</p>

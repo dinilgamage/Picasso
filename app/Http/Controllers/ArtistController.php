@@ -12,12 +12,19 @@ class ArtistController extends Controller
     public function index()
     {
         $artists = User::where('role', 0)->where('id', '!=', auth()->id())->get();
+        $artists->load('ratings');
+
+        foreach ($artists as $artist) {
+            $artist->averageRating = $artist->ratings->avg('rating');
+        }
         return view('artists.index', ['artists' => $artists]);
     }
     
     public function show(User $artist)
     {
         $userId = auth()->id();
+        $artist->load('ratings'); 
+        $artist->averageRating = $artist->ratings->avg('rating'); 
 
         // Check if the user is authenticated and not viewing their own profile
         if ($userId && $userId !== $artist->id) {
