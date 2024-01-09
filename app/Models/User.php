@@ -30,6 +30,11 @@ class User extends Authenticatable
         return $this->hasMany(Rating::class, 'rated_id');
     }
 
+    public function wishlist()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
     protected $fillable = [
         'name',
         'phone',

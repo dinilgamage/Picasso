@@ -19,6 +19,10 @@ class Artwork extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function wishlistedByUsers()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
     protected $fillable = [
         'title',
         'desc',

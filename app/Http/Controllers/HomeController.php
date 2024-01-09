@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -28,8 +29,19 @@ class HomeController extends Controller
 
     public function analytics()
     {
-        
+        $userId = auth()->id();
+        $user = User::with('ratings', 'artworks')->find($userId);
+        $totalRatings = $user->ratings->count(); 
+        $averageRating = $user->ratings->avg('rating'); 
+        $totalArtworkViews = $user->artworks->sum('views'); 
+        $averageArtworkView = $user->artworks->count() > 0 ? $totalArtworkViews / $user->artworks->count() : 0; 
 
-        return view('profile.analytics');
+        return view('profile.analytics', [
+            'user' => $user,
+            'totalRatings' => $totalRatings,
+            'averageRating' => $averageRating,
+            'totalArtworkViews' => $totalArtworkViews,
+            'averageArtworkView' => $averageArtworkView
+        ]);
     }
 }

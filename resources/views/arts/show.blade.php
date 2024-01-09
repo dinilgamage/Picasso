@@ -15,6 +15,17 @@
             <div class="col-md-6">
                 {{-- details div --}}
                 <div> 
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <p>Description: {{ $artwork->desc }}</p>
                     <p>Artist: {{ $artwork->user->name }}</p>
                     <p>Category: {{ $artwork->category->name }}</p>
@@ -35,7 +46,10 @@
                         </form>
                     </div>
                     <div style="padding-right: 10px;">
-                        <a href="#" class="btn btn-primary">Add to wishlist</a>
+                        <form action="{{ route('wishlist.add', $artwork) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+                        </form>
                     </div>
                     <div style="padding-right: 10px;">
                         <a href="{{ route('artists.show', $artwork->user->id) }}" class="btn btn-primary">View artist</a>
@@ -46,6 +60,7 @@
                     <div>
                         <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
                     </div>
+                    
                     
                 </div>
             </div>

@@ -182,11 +182,19 @@ class ArtworkController extends Controller
 
     public function addToCart(Request $request, Artwork $artwork)
     {
-        $cart = new Cart();
-        $cart->user_id = auth()->id();
-        $cart->artwork_id = $artwork->id;
-        $cart->save();
+        $existingCartItem = Cart::where('user_id', Auth::id())
+                                ->where('artwork_id', $artwork->id)
+                                ->first();
 
-        return back()->with('success', 'Artwork added to cart!');
+        if ($existingCartItem) {
+            return back()->with('error', 'Item is already in your cart.');
+        } else {
+            $cartItem = new Cart();
+            $cartItem->user_id = Auth::id();
+            $cartItem->artwork_id = $artwork->id;
+            $cartItem->save();
+
+            return back()->with('success', 'Artwork added to cart!!');
+        }
     }
 }
