@@ -133,6 +133,23 @@ button:hover{
 
 .fa-star {
     color: #FFBB07;
-    
+    font-size: 2em;
 }
 
+.modal-dialog {
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    
+    
+ }
+
+ .rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .modal-content {
+    background-color: AntiqueWhite;
+ }

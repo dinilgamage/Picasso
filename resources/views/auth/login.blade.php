@@ -68,6 +68,11 @@
                                     {{ __('Login') }}
                                 </button>
                             </div>
+                            @if(session('login_message'))
+                                <div class="alert alert-danger mt-3">
+                                    {{ session('login_message') }}
+                                </div>
+                            @endif
                         </div>
                     </form>
                 </div>

@@ -46,4 +46,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function showLoginForm(Request $request)
+    {
+        // Check if there's a message in the query parameters and flash it to the session
+        if ($request->has('message')) {
+            session()->flash('login_message', $request->message);
+        }
+
+        return view('auth.login');
+    }
 }
