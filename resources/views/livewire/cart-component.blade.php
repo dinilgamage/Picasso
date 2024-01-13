@@ -36,7 +36,9 @@
         </div>
         <div class="d-flex justify-content-end mt-3">
             <div class="me-2">
-                <a href="#" class="btn btn-success">Go to Checkout</a>
+              
+                <a href="{{ route('checkout.index') }}" class="btn btn-success">Go to Checkout</a>
+                
             </div>
             <button wire:click="clearCart" class="btn btn-warning me-2">Clear Cart</button> 
 
