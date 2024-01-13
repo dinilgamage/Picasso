@@ -13,4 +13,8 @@ class Cart extends Model
     {
         return $this->belongsTo(Artwork::class);
     }
+    public function artist()
+    {
+    return $this->belongsTo(User::class);
+    }
 }

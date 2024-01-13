@@ -64,7 +64,7 @@ Route::get('/search/autocomplete', [SearchController::class, 'autocomplete'])->n
 
 Route::post('/arts/{artwork}/add-to-cart', [ArtworkController::class, 'addToCart'])->name('arts.add-to-cart')->middleware('auth');
 Route::get('/cart', function () {
-    return view('cart-component');
+    return view('cart.cart-component');
 })->name('cart')->middleware('auth');
 
 Route::post('/submit-rating', [RatingController::class, 'store'])->middleware('auth');
