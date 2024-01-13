@@ -54,9 +54,9 @@
                     <div style="padding-right: 10px;">
                         <a href="{{ route('artists.show', $artwork->user->id) }}" class="btn btn-primary">View artist</a>
                     </div>
-                    <div style="padding-right: 10px;">
+                    {{-- <div style="padding-right: 10px;">
                         <a href="#" class="btn btn-success">Purchase</a>
-                    </div>
+                    </div> --}}
                     <div>
                         <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
                     </div>

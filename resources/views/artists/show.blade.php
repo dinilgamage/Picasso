@@ -19,10 +19,17 @@
                 <p>Website: {{ $artist->website }}</p>
             </div>
             <div>
-                <a href="#" class="btn btn-primary">Contact</a>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal">
-                    Rate
-                </button>
+                
+                @auth
+                    @if (auth()->user()->id !== $artist->id)
+                        <a href="#" class="btn btn-primary">Contact</a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal">
+                            Rate
+                        </button>
+                    @endif
+                @endauth
+                <a href="#artist-artworks" class="btn btn-primary">View Artworks</a>
+
                 <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
                 <!-- Trigger button for the modal -->
                 
@@ -54,8 +61,36 @@
             </div>
         </div>
    </div>
+    <div class="row mt-5" id="artist-artworks">
+        <h1>By {{ $artist->name }}</h1>
+        @foreach ($artworks as $artwork)
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow">
+                        <img class="card-img-top card-img" src="{{ asset('images/' . $artwork->image) }}" alt="{{ $artwork->title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $artwork->title }}</h5>
+                            <p class="card-text"><small class="text-muted">For sale by {{ $artwork->user->name }}</small></p>
+                            <p class="card-text"><small>{{ $artwork->views }} {{ $artwork->views == 1 ? 'view' : 'views' }}</small></p>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="{{ route('arts.show', $artwork) }}" class="btn btn-primary w-100">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+    </div>
 </div>
 <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
    let currentRating = 0;
 
    window.onload = function() {

@@ -23,25 +23,21 @@ class ArtistController extends Controller
     public function show(User $artist)
     {
         $userId = auth()->id();
-        $artist->load('ratings'); 
+        $artist->load([ 'ratings', 'artworks']); 
         $artist->averageRating = $artist->ratings->avg('rating'); 
 
-        // Check if the user is authenticated and not viewing their own profile
         if ($userId && $userId !== $artist->id) {
             $artistId = $artist->id;
             $cacheKey = "user_{$userId}_artist_{$artistId}_view";
 
-            // Check if the user has viewed this artist in the last 24 hours
             if (!Cache::has($cacheKey)) {
-                // Increment the profile views
                 $artist->increment('profile_views');
 
-                // Store the current timestamp in the cache for 24 hours
                 Cache::put($cacheKey, now(), 60 * 24);
             }
         }
 
-        return view('artists.show', ['artist' => $artist]);
+        return view('artists.show', ['artist' => $artist, 'artworks' => $artist->artworks]);
     }
 
 }

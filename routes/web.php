@@ -13,6 +13,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\CheckoutController;
 
 
 
@@ -72,5 +73,9 @@ Route::post('/wishlist/add/{artwork}', [WishlistController::class, 'addToWishlis
 Route::delete('/wishlist/remove/{wishlist}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove')->middleware('auth');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index')->middleware('auth');
 Route::post('/wishlist/clear', [WishlistController::class, 'clearWishlist'])->name('wishlist.clear')->middleware('auth');
+
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 //command to make a controller named WelcomeContoller with reosrces 
 // php artisan make:controller WelcomeController --resource 
