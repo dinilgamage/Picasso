@@ -106,6 +106,7 @@
                                     <a href="{{ url('/wishlist') }}" class="dropdown-item custom-dropdown-item">Wishlist</a>
                                     <a href="{{ url('/artworks') }}" class="dropdown-item custom-dropdown-item">Manage Artworks</a>
                                     <a href="{{ url('/orders') }}" class="dropdown-item custom-dropdown-item">Manage Orders</a>
+                                    <a href="{{ url('/orders/history') }}" class="dropdown-item custom-dropdown-item">Order History</a>
                                     <a class="dropdown-item custom-dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

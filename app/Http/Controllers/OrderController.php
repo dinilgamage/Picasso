@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function history()
+    {
+        $userId = auth()->id();
+        $orderItems = Order::where('user_id', $userId)->with('items')->get();
+
+        return view('orders.history', compact('orderItems'));
+    }
     public function index()
     {
     $status = request('status');
@@ -65,4 +72,6 @@ class OrderController extends Controller
     
       return redirect()->route('orders.index');
     }
+
+    
 }

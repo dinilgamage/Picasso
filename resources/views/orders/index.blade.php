@@ -4,7 +4,7 @@
    <div class="container">
        <div class="row">
            <div class="col-md-9">
-               <h1>Your Orders</h1>
+               <h1>Manage Orders</h1>
            </div>
            <div class="col-md-3">
                <form action="{{ route('orders.index') }}" method="GET">
