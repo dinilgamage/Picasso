@@ -1,18 +1,21 @@
-## Welcome to Picasso
-Features:
-    1. Admin dashboard with analytics, user, products, category, order management.
-    2. Artist dashboard with analytics, wishlist, cart, profile, products, order management and purchase history.
-    3. Authentication and middleware
-    4. Search and filtering
-    5. View and rate all artists, view their average rating, view their details, contact them and view artist specific artworks.
-    6. View all artworks, view the total views of the artwork and other details.
-Analytics:
-    1.Artist:
-        - Profile Views
-        - Total and average artwork views
-        - Total and average ratings
-        - Artworks on sale and Artworks sold
-        - Total Revenue
+# Welcome to Picasso
+
+## Features:
+1. Admin dashboard with analytics, user, products, category, order management.
+2. Artist dashboard with analytics, wishlist, cart, profile, products, order management, and purchase history.
+3. Authentication and middleware.
+4. Search and filtering.
+5. View and rate all artists, view their average rating, view their details, contact them, and view artist-specific artworks.
+6. View all artworks, view the total views of the artwork, and other details.
+
+## Analytics:
+1. Artist:
+   - Profile Views
+   - Total and average artwork views
+   - Total and average ratings
+   - Artworks on sale and Artworks sold
+   - Total Revenue
+
 
 ## Technologies Used in the Project
 
