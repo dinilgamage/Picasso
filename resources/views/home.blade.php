@@ -5,6 +5,11 @@
 @section('content')
 <div class="container">
     <h1>Manage your Profile</h1>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow mb-4">

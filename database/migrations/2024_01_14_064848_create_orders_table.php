@@ -9,22 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->string('delivery_address');
+    public function up()
+   {
+       Schema::create('orders', function (Blueprint $table) {
+           $table->id();
+           $table->foreignId('user_id')->constrained()->onDelete('cascade');
+           $table->decimal('total', 8, 2);
+           $table->string('delivery_address');
            $table->enum('status', ['cancelled', 'pending', 'accepted'])->default('pending');
            $table->string('payment_method');
-        });
-    }
+           $table->timestamps();
+       });
+   }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('orders');
     }
 };
