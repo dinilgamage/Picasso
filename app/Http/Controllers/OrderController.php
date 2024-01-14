@@ -17,6 +17,7 @@ class OrderController extends Controller
 
         return view('orders.history', compact('orderItems'));
     }
+    
     public function index()
     {
     $status = request('status');
@@ -41,36 +42,30 @@ class OrderController extends Controller
       return view('orders.show', compact('order'));
   }
 
-  public function accept(Order $order)
+  public function accept(OrderItem $item)
     {
-    foreach ($order->items as $item) {
         if ($item->artwork->sold == 1) {
             return redirect()->back()->with('error', 'This artwork has already been sold.');
         }
-    }
-
-    $order->update(['status' => 'accepted']);
-    foreach ($order->items as $item) {
+        
         $item->artwork->update(['sold' => 1]);
-        // Cancel all other pending orders for this artwork
-        Order::where('status', 'pending')
-            ->whereHas('items', function ($query) use ($item) {
-                $query->where('artwork_id', $item->artwork_id);
-            })
+        $item->update(['status' => 'accepted']);
+        OrderItem::where('status', 'pending')
+            ->where('artwork_id', $item->artwork_id)
             ->update(['status' => 'cancelled']);
-    }
-    return redirect()->route('orders.index');
+
+        return redirect()->route('orders.index')->with('success', 'Order accepted successfully!');
     }
 
-    public function deny(Order $order)
+    public function deny(OrderItem $item)
     {
-      if ($order->status == 'cancelled') {
+      if ($item->status == 'cancelled') {
           return redirect()->back()->with('error', 'This order has already been cancelled.');
       }
     
-      $order->update(['status' => 'cancelled']);
+      $item->update(['status' => 'cancelled']);
     
-      return redirect()->route('orders.index');
+      return redirect()->route('orders.index')->with('success', 'Order cancelled successfully!');
     }
 
     

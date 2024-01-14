@@ -16,7 +16,6 @@ return new class extends Migration
            $table->foreignId('user_id')->constrained()->onDelete('cascade');
            $table->decimal('total', 8, 2);
            $table->string('delivery_address');
-           $table->enum('status', ['cancelled', 'pending', 'accepted'])->default('pending');
            $table->string('payment_method');
            $table->timestamps();
        });

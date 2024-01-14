@@ -39,7 +39,7 @@
                             <td><img src="{{ asset('images/' . $item->artwork->image) }}" alt="{{ $item->artwork->title }}" style="width: 100px"></td>
                                <td>{{ $item->artwork->title }}</td>
                                <td>{{ $item->price }}</td>
-                               <td>{{ $order->status }}</td>
+                               <td>{{ $item->status }}</td>
                                <td>{{ $order->created_at }}</td>
                                <td><a href="{{ route('arts.show', $item->artwork) }}" class="btn btn-primary">View Artwork</a></td>
                             </tr>

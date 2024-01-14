@@ -15,6 +15,7 @@ class OrderItem extends Model
         'order_id',
         'artwork_id',
         'price',
+        'status',
     ];
 
 

@@ -82,8 +82,8 @@ Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.s
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
 Route::get('/orders/history', [OrderController::class, 'history'])->name('orders.history')->middleware('auth');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show')->middleware('auth');
-Route::put('/orders/{order}/accept', [OrderController::class, 'accept'])->name('orders.accept')->middleware('auth');
-Route::put('/orders/{order}/deny', [OrderController::class, 'deny'])->name('orders.deny')->middleware('auth');
+Route::put('/orders/{item}/accept', [OrderController::class, 'accept'])->name('orders.accept')->middleware('auth');
+Route::put('/orders/{item}/deny', [OrderController::class, 'deny'])->name('orders.deny')->middleware('auth');
 
 //command to make a controller named WelcomeContoller with reosrces 
 // php artisan make:controller WelcomeController --resource 

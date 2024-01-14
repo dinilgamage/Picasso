@@ -26,6 +26,11 @@
                {{ session('error') }}
            </div>
        @endif
+        @if(session('success'))
+              <div class="alert alert-success">
+                {{ session('success') }}
+              </div>
+        @endif
        <table class="table table-hover">
            <thead>
                <tr>
@@ -45,16 +50,16 @@
                       <td>{{ $item->artwork->price }}</td>
                       <td>{{ $item->order->user ? $item->order->user->name : 'N/A' }}</td>
                       <td>{{ $item->order->user ? $item->order->user->email : 'N/A' }}</td>
-                      <td>{{ $item->order->status }}</td>
+                      <td>{{ $item->status }}</td>
                       <td>{{ $item->order->created_at }}</td>
                       <td>
                           <div style="display: flex; gap: 10px;">
-                              <form action="{{ route('orders.accept', $item->order) }}" method="POST">
+                              <form action="{{ route('orders.accept', $item) }}" method="POST">
                                  @csrf
                                  @method('PUT')
-                                 <button type="submit" class="btn btn-success" {{ $item->order->status == 'cancelled' ? 'disabled' : '' }}>Accept</button>
+                                 <button type="submit" class="btn btn-success" {{ $item->status == 'cancelled' ? 'disabled' : '' }}>Accept</button>
                               </form>
-                              <form action="{{ route('orders.deny', $item->order) }}" method="POST">
+                              <form action="{{ route('orders.deny', $item) }}" method="POST">
                                  @csrf
                                  @method('PUT')
                                  <button type="submit" class="btn btn-danger">Deny</button>
