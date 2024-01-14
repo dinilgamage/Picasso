@@ -14,7 +14,7 @@ class OrderController extends Controller
     {
         $userId = auth()->id();
         $orderItems = Order::where('user_id', $userId)->with('items')->get();
-
+        $orderItems = Order::orderBy('created_at', 'desc')->get();
         return view('orders.history', compact('orderItems'));
     }
     
@@ -24,7 +24,8 @@ class OrderController extends Controller
     $orderItems = OrderItem::with('order', 'artwork')
         ->whereHas('artwork', function ($query) {
             $query->where('artist_id', Auth::id());
-        });
+        })
+        ->orderBy('created_at', 'desc');;
 
     if ($status && $status != 'all') {
         $orderItems = $orderItems->whereHas('order', function ($query) use ($status) {
@@ -33,7 +34,7 @@ class OrderController extends Controller
     }
 
     $orderItems = $orderItems->get();
-
+    
     return view('orders.index', compact('orderItems'));
     }
 
