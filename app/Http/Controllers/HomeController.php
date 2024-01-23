@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth'); //makes sure a user is logged in before returing the view for home screen
+        $this->middleware('auth'); //makes sure a user is logged in before returning the view for home screen
     }
 
     /**
@@ -30,18 +30,38 @@ class HomeController extends Controller
     public function analytics()
     {
         $userId = auth()->id();
-        $user = User::with('ratings', 'artworks')->find($userId);
+        $user = User::with(['ratings', 'artworks' => function ($query) {
+            $query->with('category');
+        }])->find($userId);
+
         $totalRatings = $user->ratings->count(); 
         $averageRating = $user->ratings->avg('rating'); 
         $totalArtworkViews = $user->artworks->sum('views'); 
         $averageArtworkView = $user->artworks->count() > 0 ? $totalArtworkViews / $user->artworks->count() : 0; 
+
+        $artworks = $user->artworks;
+        $soldArtworks = $artworks->where('sold', 1);
+        $totalArtworksSold = $soldArtworks->count();
+        $totalRevenue = $soldArtworks->sum('price');
+
+        $bestPerformingArtwork = $artworks->sortByDesc('views')->first();
+        $categoryViews = $artworks->groupBy('category.name')->map(function ($item, $key) {
+            return $item->sum('views');
+        });
+        $bestPerformingCategory = $categoryViews->sortKeysDesc()->keys()->first();
+        $bestPerformingCategoryViews = $categoryViews[$bestPerformingCategory];
 
         return view('profile.analytics', [
             'user' => $user,
             'totalRatings' => $totalRatings,
             'averageRating' => $averageRating,
             'totalArtworkViews' => $totalArtworkViews,
-            'averageArtworkView' => $averageArtworkView
+            'averageArtworkView' => $averageArtworkView,
+            'totalArtworksSold' => $totalArtworksSold,
+            'totalRevenue' => $totalRevenue,
+            'bestPerformingArtwork' => $bestPerformingArtwork,
+            'bestPerformingCategory' => $bestPerformingCategory,
+            'bestPerformingCategoryViews' => $bestPerformingCategoryViews,
         ]);
     }
 }

@@ -77,8 +77,28 @@
                         <div class="col-md-6">
                             <div class="card text-center mb-3 card-outer">
                                 <div class="card-body card-inner">
-                                    <h5 class="card-title">{{ Auth::user()->artworksSold ?? 0 }}</h5>
+                                    <h5 class="card-title">{{ $totalArtworksSold }}</h5>
                                     <p class="card-text">Artworks Sold</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card text-center mb-3 card-outer">
+                                <div class="card-body card-inner">
+                                    <h5 class="card-title"  style="font-size: 26px">{{ $bestPerformingArtwork->title }}</h5>
+                                    <p class="card-title"  style="font-size: 20px">Total Views: {{ $bestPerformingArtwork->views }}</p>
+                                    <p class="card-text">Your Best Performing Artwork</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card text-center mb-3 card-outer">
+                                <div class="card-body card-inner">
+                                    <h5 class="card-title" style="font-size: 26px">{{ $bestPerformingCategory }}</h5>
+                                    <p class="card-title"  style="font-size: 20px">Total Views: {{ $bestPerformingCategoryViews }}</p>
+                                    <p class="card-text">Your Best Performing Category</p>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +106,7 @@
                     
                     <div class="card text-center mb-3 card-outer" >
                         <div class="card-body card-inner" >
-                            <h5 class="card-title">{{ Auth::user()->totalRevenue ?? 0 }}</h5>
+                            <h5 class="card-title">{{ $totalRevenue }}</h5>
                             <p class="card-text">Total Revenue (LKR)</p>
                         </div>
                     </div>
