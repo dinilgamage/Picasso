@@ -12,7 +12,6 @@ class SearchController extends Controller
     {
         $query = $request->input('query');
 
-        // Search in artworks and artists
         $artworks = Artwork::where('title', 'LIKE', "%{$query}%")
             ->orWhere('desc', 'LIKE', "%{$query}%")
             ->orWhere('material', 'LIKE', "%{$query}%")
@@ -26,7 +25,6 @@ class SearchController extends Controller
 
         $artists = User::where('name', 'LIKE', "%{$query}%")->get();
 
-        // Return search results to view
         return view('search_results', compact('artworks', 'artists', 'query'));
     }
 

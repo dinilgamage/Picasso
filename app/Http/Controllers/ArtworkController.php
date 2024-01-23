@@ -83,17 +83,13 @@ class ArtworkController extends Controller
     {
         $userId = auth()->id();
 
-        // Check if the user is authenticated and not viewing their own artwork
         if ($userId && $userId !== $artwork->artist_id) {
             $artworkId = $artwork->id;
             $cacheKey = "user_{$userId}_artwork_{$artworkId}_view";
 
-            // Check if the user has viewed this artwork in the last 24 hours
             if (!Cache::has($cacheKey)) {
-                // Increment the artwork views
                 $artwork->increment('views');
 
-                // Store the current timestamp in the cache for 24 hours
                 Cache::put($cacheKey, now(), 60 * 24);
             }
         }

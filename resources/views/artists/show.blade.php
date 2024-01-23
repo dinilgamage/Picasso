@@ -17,13 +17,19 @@
                 <p>Bio: {{ $artist->bio }}</p>
                 <p>Social Links: {{ $artist->social_links }}</p>
                 <p>Website: {{ $artist->website }}</p>
+                <p>Average Rating: {{ number_format($artist->averageRating, 1) }}</p>
+                <div id="contactDetails" style="display: none;">
+                    <h3>Contact Details</h3>
+                    <p>Email: {{ $artist->email }}</p>
+                    <p>Phone: {{ $artist->phone }}</p>
+                </div>
             </div>
             <div>
                 
                 @auth
                     @if (auth()->user()->id !== $artist->id)
-                        <a href="#" class="btn btn-primary">Contact</a>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal">
+                    <button type="button" class="btn btn-primary" onclick="showContactDetails()">Contact</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal">
                             Rate
                         </button>
                     @endif
@@ -81,6 +87,14 @@
     </div>
 </div>
 <script>
+    function showContactDetails() {
+        var contactDetails = document.getElementById('contactDetails');
+        if (contactDetails.style.display === 'none') {
+            contactDetails.style.display = 'block';
+        } else {
+            contactDetails.style.display = 'none';
+        }
+    }
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -127,7 +141,6 @@
     const rating = currentRating;
     const ratedId = {{ $artist->id }};
     
-    // Check if the user is authenticated
     @if(Auth::check())
     $.ajax({
         url: '/submit-rating',
@@ -151,7 +164,6 @@
         }
     });
     @else
-    // Redirect to the login page with a message
     window.location.href = "{{ route('login') }}?redirect={{ url()->current() }}&message=Please login to rate";
     @endif
 }

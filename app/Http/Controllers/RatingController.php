@@ -18,16 +18,13 @@ class RatingController extends Controller
             'rated_id' => 'required|integer|exists:users,id',
         ]);
 
-        // Check if the user has already rated this artist
         $existingRating = Rating::where('rater_id', Auth::id())
                                      ->where('rated_id', $data['rated_id'])
                                      ->first();
 
         if ($existingRating) {
-            // Update the existing rating
             $existingRating->update(['rating' => $data['rating']]);
         } else {
-            // Create a new rating
             Rating::create([
                 'rater_id' => Auth::id(),
                 'rated_id' => $data['rated_id'],
