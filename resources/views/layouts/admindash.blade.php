@@ -32,6 +32,12 @@
             <li>
                 <a href="{{ route('categories.index') }}">Manage Categories</a>
             </li>
+            <li>
+                <a href="{{ route('orders.index') }}">Manage Orders</a>
+            </li>
+            <li>
+                <a href="{{ route('orders.history') }}">All Order History</a>
+            </li>
           
             <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();

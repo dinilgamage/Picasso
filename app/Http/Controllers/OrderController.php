@@ -12,30 +12,36 @@ class OrderController extends Controller
 {
     public function history()
     {
-        $userId = auth()->id();
-        $orderItems = Order::where('user_id', $userId)->with('items')->get();
-        $orderItems = Order::orderBy('created_at', 'desc')->get();
+        if (auth()->user()->role == 1) {
+            $orderItems = Order::with('items')->orderBy('created_at', 'desc')->get();
+        } else {
+            $userId = auth()->id();
+            $orderItems = Order::where('user_id', $userId)->with('items')->orderBy('created_at', 'desc')->get();
+        }
+
         return view('orders.history', compact('orderItems'));
     }
     
     public function index()
     {
-    $status = request('status');
-    $orderItems = OrderItem::with('order', 'artwork')
-        ->whereHas('artwork', function ($query) {
-            $query->where('artist_id', Auth::id());
-        })
-        ->orderBy('created_at', 'desc');;
+        $status = request('status');
+        $orderItems = OrderItem::with('order', 'artwork');
 
-    if ($status && $status != 'all') {
-        $orderItems = $orderItems->whereHas('order', function ($query) use ($status) {
-            $query->where('status', $status);
-        });
-    }
+        if (!auth()->user()->role == 1) {
+            $orderItems = $orderItems->whereHas('artwork', function ($query) {
+                $query->where('artist_id', Auth::id());
+            });
+        }
 
-    $orderItems = $orderItems->get();
-    
-    return view('orders.index', compact('orderItems'));
+        if ($status && $status != 'all') {
+            $orderItems = $orderItems->whereHas('order', function ($query) use ($status) {
+                $query->where('status', $status);
+            });
+        }
+
+        $orderItems = $orderItems->orderBy('created_at', 'desc')->get();
+        
+        return view('orders.index', compact('orderItems'));
     }
 
   public function show(Order $order)

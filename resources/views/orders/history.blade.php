@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->user()->role ? 'layouts.admindash' : 'layouts.app')
 
 @section('content')
   <div class="container">
@@ -25,6 +25,9 @@
                 <thead>
                     <tr>
                         <th>Artwork</th>
+                        @if (auth()->user()->role == 1)
+                            <th>Placed by</th>
+                        @endif
                         <th>Title</th>
                         <th>Price</th>
                         <th>Status</th>
@@ -37,6 +40,9 @@
                         @foreach($order->items as $item)
                             <tr>
                             <td><img src="{{ asset('images/' . $item->artwork->image) }}" alt="{{ $item->artwork->title }}" style="width: 100px"></td>
+                                 @if (auth()->user()->role == 1)
+                                      <td>{{ $item->order->user->email ?? 'N/A' }}</td>
+                                @endif
                                <td>{{ $item->artwork->title }}</td>
                                <td>{{ $item->price }}</td>
                                <td>{{ $item->status }}</td>

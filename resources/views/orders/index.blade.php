@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends(auth()->user()->role ? 'layouts.admindash' : 'layouts.app')
+
 
 @section('content')
    <div class="container">
@@ -36,7 +37,7 @@
                <tr>
                   <th>Artwork</th>
                   <th>Price</th>
-                  <th>Buyer Name</th>
+                  <th>{{ auth()->user()->role == 1 ? 'Seller Email' : 'Buyer Name' }}</th>
                   <th>Buyer Email</th>
                   <th>Status</th>
                   <th>Placed on</th>
@@ -48,8 +49,13 @@
                   <tr>
                       <td>{{ $item->artwork->title }}</td>
                       <td>{{ $item->artwork->price }}</td>
-                      <td>{{ $item->order->user ? $item->order->user->name : 'N/A' }}</td>
-                      <td>{{ $item->order->user ? $item->order->user->email : 'N/A' }}</td>
+                      <td>
+                        @if (auth()->user()->role == 1)
+                            {{ $item->artwork->user->email ?? 'N/A' }} 
+                        @else
+                            {{ $item->order->user->name ?? 'N/A' }}
+                        @endif
+                    </td>                      <td>{{ $item->order->user ? $item->order->user->email : 'N/A' }}</td>
                       <td>{{ $item->status }}</td>
                       <td>{{ $item->order->created_at }}</td>
                       <td>
