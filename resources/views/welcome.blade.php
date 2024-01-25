@@ -167,7 +167,7 @@
                 }
             </style>
             @endauth
-            
+
             @if($mostViewedCategory && $mostViewedCategory->artworks->count() > 0)
             <div class="vh-100" id="main-c">
                 <div class="container h-100 d-flex justify-content-center align-items-center">
@@ -203,6 +203,54 @@
                 </div>
             </div>
             @endif
+
+            @if($topProfileViewsUsers && $topProfileViewsUsers->count() > 0)
+            <div class="vh-100">
+                <div class="container h-100 d-flex justify-content-center align-items-center">
+                    <div class="col-md-12">
+                        <div class="translucent-container" style="background-color: rgba(147, 56, 0, 0.9); padding: 20px; color:#fff">
+                            <h1 class="pb-4">Picasso's Most Popular Artists</h1>
+                            <div class="row">
+                                @foreach($topProfileViewsUsers as $user)
+                                    <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="card mb-4 shadow">
+                                            <img src="{{ asset('avatars/' . $user->avatar) }}" alt="User Avatar" class="img-fluid">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $user->name }}</h5>
+                                                <p class="card-text">{{ Str::limit($user->bio, 100) }}</p>
+                                                <a href="{{ route('artists.show', $user) }}" class="btn btn-primary w-100">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            @if($mostPopularArtwork)
+            <div class="vh-100">
+                <div class="container h-100 d-flex justify-content-center align-items-center">
+                    <div class="col-md-12">
+                        <div class="translucent-container" style="background-color: rgba(147, 56, 0, 0.9); padding: 20px; color:#fff">
+                            <h1 class="pb-4">{{ $mostPopularArtwork->title }}, a Popular Piece of Art</h1>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <p style="font-size: 1.7em">{{ $mostPopularArtwork->desc }}</p>
+                                    <a href="{{ route('arts.show', $mostPopularArtwork) }}" class="btn btn-secondary" style="background-color: #c94f03">View Artwork</a>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <img src="{{ asset('images/' . $mostPopularArtwork->image) }}" alt="Artwork Image" class="img-fluid" height="500" width="500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <div class="vh-100" >
                 <div class="container h-100 d-flex justify-content-center align-items-center">
                     <div class="col-md-12">
@@ -253,26 +301,9 @@
                 </div>
             @endif
             
-            @if($mostPopularArtwork)
-            <div class="vh-100">
-                <div class="container h-100 d-flex justify-content-center align-items-center">
-                    <div class="col-md-12">
-                        <div class="translucent-container" style="background-color: rgba(147, 56, 0, 0.9); padding: 20px; color:#fff">
-                            <h1 class="pb-4">{{ $mostPopularArtwork->title }}, a Popular Piece of Art</h1>
-                            <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <p style="font-size: 1.7em">{{ $mostPopularArtwork->desc }}</p>
-                                    <a href="{{ route('arts.show', $mostPopularArtwork) }}" class="btn btn-secondary" style="background-color: #c94f03">View Artwork</a>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <img src="{{ asset('images/' . $mostPopularArtwork->image) }}" alt="Artwork Image" class="img-fluid" height="500" width="500">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
+            
+
+            
             
             
             

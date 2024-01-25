@@ -31,6 +31,8 @@ class WelcomeController extends Controller
 
         $latestArtworks = Artwork::with('user')->orderBy('created_at', 'desc')->take(4)->get();
         $mostPopularArtwork = Artwork::with('user')->orderBy('views', 'desc')->first();
+        $topProfileViewsUsers = User::orderBy('profile_views', 'desc')->take(4)->get();
+
         $mostViewedCategory = Category::withSum('artworks', 'views')
         ->with(['artworks' => function ($query) {
             $query->inRandomOrder()->take(2);
@@ -45,7 +47,8 @@ class WelcomeController extends Controller
             'highestRatedArtist',
             'latestArtworks',
             'mostPopularArtwork',
-            'mostViewedCategory'
+            'mostViewedCategory',
+            'topProfileViewsUsers'
         ));
     }
 
