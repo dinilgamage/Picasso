@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Artwork;
 use App\Models\User;
+use App\Models\Category;
 //use db facade
 use Illuminate\Support\Facades\DB;
 
@@ -30,14 +31,21 @@ class WelcomeController extends Controller
 
         $latestArtworks = Artwork::with('user')->orderBy('created_at', 'desc')->take(4)->get();
         $mostPopularArtwork = Artwork::with('user')->orderBy('views', 'desc')->first();
+        $mostViewedCategory = Category::withSum('artworks', 'views')
+        ->with(['artworks' => function ($query) {
+            $query->inRandomOrder()->take(2);
+        }])
+        ->orderByDesc('artworks_sum_views')
+        ->first();
+
 
 
         return view('welcome', compact(
             'artworks',
             'highestRatedArtist',
             'latestArtworks',
-            'mostPopularArtwork'
-            
+            'mostPopularArtwork',
+            'mostViewedCategory'
         ));
     }
 

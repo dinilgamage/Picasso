@@ -163,13 +163,39 @@
             @auth
             <style>
                 #main-c {
-                    margin-top: 100px;
+                    margin-top: 40px;
                 }
             </style>
             @endauth
+            <div class="vh-100" id="main-c">
+                <div class="container h-100 d-flex justify-content-center align-items-center">
+                    <div class="col-md-12">
+                        <div class="translucent-container" style="background-color: rgba(147, 56, 0, 0.9); padding: 20px; color:#fff">
+                            <h1 class="pb-4">New Releases</h1>
+                            <div class="row">
+                                @foreach($latestArtworks as $artwork)
+                                    <div class="col-md-3">
+                                        <div class="card mb-4 shadow">
+                                            <img class="card-img-top card-img" src="{{ asset('images/' . $artwork->image) }}" alt="{{ $artwork->title }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $artwork->title }}</h5>
+                                                <p class="card-text"><small class="text-muted">For sale by {{ $artwork->user->name }}</small></p>
+                                                <p class="card-text"><small>{{ $artwork->views }} {{ $artwork->views == 1 ? 'view' : 'views' }}</small></p>
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <a href="{{ route('arts.show', $artwork) }}" class="btn btn-primary w-100">View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             @if($highestRatedArtist)
-                <div id="main-c" class="vh-100" > 
+                <div class="vh-100" > 
                     <div class="container h-100 d-flex justify-content-center align-items-center">
                         <div class="col-md-12">
                             <div class="translucent-container" style="background-color: rgba(147, 56, 0, 0.9); padding: 20px; color:#fff">
@@ -212,33 +238,43 @@
             </div>
             @endif
             
-            
+            @if($mostViewedCategory && $mostViewedCategory->artworks->count() > 0)
             <div class="vh-100">
                 <div class="container h-100 d-flex justify-content-center align-items-center">
                     <div class="col-md-12">
                         <div class="translucent-container" style="background-color: rgba(147, 56, 0, 0.9); padding: 20px; color:#fff">
-                            <h1 class="pb-4">New Releases</h1>
                             <div class="row">
-                                @foreach($latestArtworks as $artwork)
-                                    <div class="col-md-3">
-                                        <div class="card mb-4 shadow">
-                                            <img class="card-img-top card-img" src="{{ asset('images/' . $artwork->image) }}" alt="{{ $artwork->title }}">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $artwork->title }}</h5>
-                                                <p class="card-text"><small class="text-muted">For sale by {{ $artwork->user->name }}</small></p>
-                                                <p class="card-text"><small>{{ $artwork->views }} {{ $artwork->views == 1 ? 'view' : 'views' }}</small></p>
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <a href="{{ route('arts.show', $artwork) }}" class="btn btn-primary w-100">View</a>
+                                <div class="col-12 col-md-6">
+                                    <h1 class="pb-4">Featured Category: {{ $mostViewedCategory->name }}</h1>
+                                    <p style="font-size: 1.7em">{{ $mostViewedCategory->description }}</p>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="row">
+                                        @foreach($mostViewedCategory->artworks as $artwork)
+                                            <div class="col-12 col-sm-6">
+                                                <div class="card mb-4 shadow">
+                                                    <img class="card-img-top card-img" src="{{ asset('images/' . $artwork->image) }}" alt="{{ $artwork->title }}">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">{{ $artwork->title }}</h5>
+                                                        <p class="card-text"><small class="text-muted">For sale by {{ $artwork->user->name }}</small></p>
+                                                        <p class="card-text"><small>{{ $artwork->views }} views</small></p>
+                                                        <div class="d-flex flex-column align-items-center">
+                                                            <a href="{{ route('arts.show', $artwork) }}" class="btn btn-primary w-100">View</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
+            
+            
 
            
 
