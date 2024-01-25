@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Artwork;
+use App\Models\User;
+//use db facade
+use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
@@ -15,7 +18,27 @@ class WelcomeController extends Controller
     public function index()
     {
         $artworks = Artwork::with('user')->get();
-        return view('welcome', compact('artworks'));
+        
+        $highestRatedArtist = DB::table('users')
+        ->join('ratings', 'users.id', '=', 'ratings.rated_id')
+        ->selectRaw('users.*, AVG(ratings.rating) as avg_rating, COUNT(ratings.rating) as num_ratings')
+        ->groupBy('users.id')
+        ->havingRaw('COUNT(ratings.rating) > 0') 
+        ->orderByDesc('avg_rating')
+        ->orderByDesc('num_ratings')
+        ->first();
+
+        $latestArtworks = Artwork::with('user')->orderBy('created_at', 'desc')->take(4)->get();
+        $mostPopularArtwork = Artwork::with('user')->orderBy('views', 'desc')->first();
+
+
+        return view('welcome', compact(
+            'artworks',
+            'highestRatedArtist',
+            'latestArtworks',
+            'mostPopularArtwork'
+            
+        ));
     }
 
     /**
