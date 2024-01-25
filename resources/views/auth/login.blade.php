@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+<div class="container mt-5">
+    <div class="row justify-content-center ">
+        <div class="col-md-5">
             <div class="card">
                 <div class="card-header fw-bolder lead" style="background-color: #933800; color:#FFBB07">{{ __('Login') }}</div>
 
