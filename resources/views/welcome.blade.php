@@ -31,6 +31,17 @@
                 font-weight: bold
                 
             }
+            
+            body {
+                cursor: url('/assets/paint-brush.png') 0 0, auto;
+                
+            }
+            button, a {
+                cursor: url('/assets/paint-brush.png'), auto;
+            }
+            .btn{
+                cursor: url('/assets/paint-brush.png'), auto;
+            }
         </style>
     </head>
     <body class="antialiased" style="background-image: url({{ asset('assets/bg.webp') }}); background-repeat: no-repeat; background-size: cover; background-attachment:fixed">

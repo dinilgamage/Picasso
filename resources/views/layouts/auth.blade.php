@@ -24,6 +24,20 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/home.css']) 
     @livewireStyles
+
+    <style>
+        
+        body {
+                cursor: url('/assets/paint-brush.png') 0 0, auto;
+                
+            }
+            button, a {
+                cursor: url('/assets/paint-brush.png'), auto;
+            }
+            .btn{
+                cursor: url('/assets/paint-brush.png'), auto;
+            }
+    </style>
 </head>
 <body style="background-image: url({{ asset('assets/loginreg-bg.jpg') }}); background-repeat: no-repeat; background-size: cover; background-attachment:fixed">
     <div id="app">

@@ -153,3 +153,18 @@ button:hover{
  .modal-content {
     background-color: AntiqueWhite;
  }
+
+ 
+           
+            
+            .paint-dot {
+                pointer-events: none;
+                background-color: #FFBB07; 
+                width: 5px; 
+                height: 5px; 
+                border-radius: 50%; 
+                position: absolute;
+                z-index: 9999;
+                opacity: 1;
+                transition: opacity 0.5s linear;
+            }
