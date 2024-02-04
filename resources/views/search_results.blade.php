@@ -25,13 +25,7 @@
                             <h5 class="card-title">{{ $artwork->title }}</h5>
                             <p class="card-text"><small class="text-muted">For sale by {{ $artwork->user->name }}</small></p>
                             <div class="d-flex flex-column align-items-center">
-                                
                                 <a href="{{ route('arts.show', $artwork) }}" class="btn btn-primary w-100">View</a>
-
-                                <p class="mt-2">Price: ${{ $artwork->price }}</p>
-
-
-
                     
                             </div>
                         </div>
