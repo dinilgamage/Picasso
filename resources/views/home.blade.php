@@ -39,6 +39,7 @@
                             <a href="{{ route('profile.edit-contact') }}" class="btn btn-primary mt-3">Edit Contact Details</a>
                         </div>
                     </div>
+                    
 
                     
                 </div>

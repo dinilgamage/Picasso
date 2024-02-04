@@ -9,6 +9,20 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="icon" href="{{ asset('favicons/icons8-art-16.png') }}" type="image/x-icon">
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/admin.css']) 
+
+    <style>
+        
+        body {
+                cursor: url('/assets/paint-brush.png') 0 0, auto;
+                
+            }
+            button, a {
+                cursor: url('/assets/paint-brush.png'), auto;
+            }
+            .btn{
+                cursor: url('/assets/paint-brush.png'), auto;
+            }
+    </style>
     
 </head>
 <body>

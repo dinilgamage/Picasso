@@ -101,5 +101,17 @@
             font-size: 60px;
             font-weight: bolder;
         }
+
+        .paint-dot {
+            pointer-events: none;
+            background-color: #FFBB07; 
+            width: 5px; 
+            height: 5px; 
+            border-radius: 50%; 
+            position: absolute;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s linear;
+        }
         
 
