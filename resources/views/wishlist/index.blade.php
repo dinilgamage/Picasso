@@ -53,7 +53,9 @@
     <div class="d-flex justify-content-end mt-3">
         <form action="{{ route('wishlist.clear') }}" method="POST">
             @csrf
-            <button type="submit" class="btn btn-warning me-2">Clear All</button>
+            @if(!$wishlistItems->isEmpty())
+                <button type="submit" class="btn btn-warning me-2">Clear All</button>
+            @endif
         </form>
         <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
     </div>

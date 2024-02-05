@@ -37,11 +37,14 @@
         <div class="d-flex justify-content-end mt-3">
             <div class="me-2">
               
-                <a href="{{ route('checkout.index') }}" class="btn btn-success">Go to Checkout</a>
+                @if(!empty($cartItem))
+                    <a href="{{ route('checkout.index') }}" class="btn btn-success me-2">Go to Checkout</a>
+                    <button wire:click="clearCart" class="btn btn-warning me-2">Clear Cart</button> 
+
+                @endif
                 
             </div>
-            <button wire:click="clearCart" class="btn btn-warning me-2">Clear Cart</button> 
-
+            
 
             <a href="{{ url()->previous() }}" class="btn btn-danger">Back</a>
             
