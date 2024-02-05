@@ -1,20 +1,37 @@
 # Welcome to Picasso
 
 ## Features:
-1. Admin dashboard with analytics, user, products, category, order management.
-2. Artist dashboard with analytics, wishlist, cart, profile, products, order management, and purchase history.
-3. Authentication and middleware.
-4. Search and filtering.
-5. View and rate all artists, view their average rating, view their details, contact them, and view artist-specific artworks.
-6. View all artworks, view the total views of the artwork, and other details.
+1.	Login and Register
+2.	Featured Content – Home Page	
+3.	Discover Artists
+4.	Discover Artworks
+5.	Profile Management	
+6.	Analytics (Artist and Admin)	
+7.	Artwork Management (Artist and Admin)
+8.	Order Management (Artist and Admin)
+9.	Order History (Artist and Admin)
+10.	User Management (Admin)
+11.	Category Management	(Admin)
+12.	Rating	
+13.	Search and Filtering	
+14.	Cart	
+15.	Wish List	
+16.	Checkout
+
 
 ## Analytics:
 1. Artist:
-   - Profile Views
-   - Total and average artwork views
-   - Total and average ratings
-   - Artworks on sale and Artworks sold
-   - Total Revenue
+   - Total artwork views: Total views for all artworks posted by the user
+   - Average Views per Artwork: Total views divided by artworks posted
+   - Total Ratings: Number of users that rated the user
+   - Average Rating: The average rating
+   - Profile View: Total number of users that viewed the user’s profile.
+   - Artworks on Sale: Number of artworks listed that are not sold
+   - Artworks Sold: Number of artworks listed that are sold
+   - Best performing artwork: Highest viewed artwork of the user
+   - Best performing category: Category that has the artworks with the highest number of collective views
+   - Total Revenue: Total value of the artworks that were sold
+
 2. Admin
    - Total users: Total number of users registered in the system
    - Artwork Clicks: Total number of views on all artworks in the system
@@ -27,12 +44,15 @@
         - Total Views by Category: The total views gained by all artworks in the system belonging to a respective category have gotten collectively.
 
 
-
 ## Technologies Used in the Project
 
 - Laravel 
 - Bootstrap
 - SQLite
+
+## Admin Credentials 
+- Email: admin@gmail.com
+- Password: admin123
 
 ## Installation Guide
 
@@ -78,10 +98,18 @@ Follow these steps to set up the system on your local machine:
 
     ```shell
     php artisan migrate
-15. Compile the front end:
+
+15. Seed the database with admin credentials:
+
+    ```shell
+    php artisan db:seed --class=UsersTableSeeder
+    
+    
+16. Compile the front end:
     ```shell
     npm run dev
-16. Start the development server:
+    
+17. Start the development server:
 
     ```shell
     php artisan serve
