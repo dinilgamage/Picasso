@@ -15,6 +15,17 @@
    - Total and average ratings
    - Artworks on sale and Artworks sold
    - Total Revenue
+2. Admin
+   - Total users: Total number of users registered in the system
+   - Artwork Clicks: Total number of views on all artworks in the system
+   - Profile Clicks: Total number of profile views on all artists in the system
+   - Total Categories: Total number of categories in the system
+   - Ratings Submitted: Total number of users that have rated on artists
+   - Total Orders Placed: Total orders placed in the system
+   - Charts: 
+        - Artwork Distribution: Portion of artworks that has been sold through the system compared to the total artworks on sale
+        - Total Views by Category: The total views gained by all artworks in the system belonging to a respective category have gotten collectively.
+
 
 
 ## Technologies Used in the Project
