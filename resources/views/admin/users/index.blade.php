@@ -5,6 +5,14 @@
     <h1>Manage Users</h1>
     
     <a href="{{ route('users.create') }}" class="btn btn-success mb-3">Add New User</a>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @php
+        session()->forget('success'); // Remove the success message from the session
+    @endphp
+@endif
 
     <table class="table table-hover">
         <thead>
@@ -41,14 +49,7 @@
             @endforeach
         </tbody>
     </table>
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @php
-        session()->forget('success'); // Remove the success message from the session
-    @endphp
-@endif
+    
 
 
 </div>

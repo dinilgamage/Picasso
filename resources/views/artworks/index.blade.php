@@ -7,6 +7,14 @@
     <h1>Manage Artworks</h1>
     
     <a href="{{ route('artworks.create') }}" class="btn btn-success mb-3">Add New Artwork</a>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @php
+        session()->forget('success'); // Remove the success message from the session
+    @endphp
+@endif
 
     <table class="table table-hover">
         <thead>
@@ -53,13 +61,6 @@
             @endforeach
         </tbody>
     </table>
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @php
-        session()->forget('success'); // Remove the success message from the session
-    @endphp
-@endif
+    
 </div>
 @endsection

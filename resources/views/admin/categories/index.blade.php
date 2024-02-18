@@ -4,6 +4,14 @@
 <div class="container">
     <h1>Categories List</h1>
     <a href="{{ route('categories.create') }}" class="btn btn-success mb-3">Add New Category</a>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @php
+        session()->forget('success'); // Remove the success message from the session
+    @endphp
+@endif
     <table class="table table-hover">
         <thead>
             <tr>
@@ -37,13 +45,6 @@
             @endforeach
         </tbody>
     </table>
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @php
-        session()->forget('success'); // Remove the success message from the session
-    @endphp
-@endif
+    
 </div>
 @endsection
